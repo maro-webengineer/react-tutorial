@@ -33,26 +33,13 @@ function App() {
 
   return (
     <div>
-      <div>
-        <p>{defaultMovieList[0].name}</p>
-        <img src={defaultMovieList[0].image} alt={defaultMovieList[0].name} />
-        <p>{defaultMovieList[0].overview}</p>
-      </div>
-      <div>
-        <p>{defaultMovieList[1].name}</p>
-        <img src={defaultMovieList[1].image} alt={defaultMovieList[1].name} />
-        <p>{defaultMovieList[1].overview}</p>
-      </div>
-      <div>
-        <p>{defaultMovieList[2].name}</p>
-        <img src={defaultMovieList[2].image} alt={defaultMovieList[2].name} />
-        <p>{defaultMovieList[2].overview}</p>
-      </div>
-      <div>
-        <p>{defaultMovieList[3].name}</p>
-        <img src={defaultMovieList[3].image} alt={defaultMovieList[3].name} />
-        <p>{defaultMovieList[3].overview}</p>
-      </div>
+      {defaultMovieList.map((movie) => (
+        <div key={movie.id}>
+          <h2>{movie.name}</h2>
+          <img src={movie.image} alt={movie.name} />
+          <p>{movie.overview}</p>
+        </div>
+      ))}
     </div>
   )
 }

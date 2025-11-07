@@ -38,13 +38,15 @@ function App() {
     <div>
       <input type="text" onChange={(e) => setKeyword(e.target.value)} />
       <div>{keyword}</div>
-      {defaultMovieList.map((movie) => (
-        <div key={movie.id}>
-          <h2>{movie.name}</h2>
-          <img src={movie.image} alt={movie.name} />
-          <p>{movie.overview}</p>
-        </div>
-      ))}
+      {defaultMovieList
+        .filter((movie) => movie.name.includes(keyword))
+        .map((movie) => (
+          <div key={movie.id}>
+            <h2>{movie.name}</h2>
+            <img src={movie.image} alt={movie.name} />
+            <p>{movie.overview}</p>
+          </div>
+        ))}
     </div>
   )
 }

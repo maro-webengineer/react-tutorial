@@ -27,23 +27,29 @@ type MovieJson = {
 
 function App() {
   const fetchMovieList = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`,
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`
-        },
-      }
-    );
+
+    const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+    let url = "";
+    if (keyword) {
+      url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=ja&page=1`;
+    } else {
+      url = "https://api.themoviedb.org/3/movie/popular?language=ja&page=1";
+    }
+
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`
+      },
+    });
+
     const data = await response.json();
-    setmovieList(
-      data.results.map((movie: MovieJson) => ({
-        id: movie.id,
-        original_title: movie.original_title,
-        poster_path: movie.poster_path,
-        overview: movie.overview,
-      }))
-    );
+    const result = data.results;
+    const movieList = result.map((movie: MovieJson) => ({
+      id: movie.id,
+      original_title: movie.original_title,
+      poster_path: movie.poster_path,
+    }));
+    setmovieList(movieList);
   };
 
   const [keyword, setKeyword] = useState("");
@@ -51,7 +57,7 @@ function App() {
 
   useEffect(() => {
     fetchMovieList();
-  }, []);
+  }, [keyword]);
 
   return (
     <div>

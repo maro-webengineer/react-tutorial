@@ -36,6 +36,10 @@ function App() {
     fetchMovieList();
   }, [keyword]);
 
+  const unimplemented = () => {
+    alert("未実装です");
+  }
+
   // HeroSection用のダミーデータ（君の名は）
   const heroTitle = "君の名は";
   const heroYear = 2016;
@@ -62,7 +66,7 @@ function App() {
             <div className="hero-section-overview">{heroOverview}</div>
           )}
           <div className="hero-section-actions">
-            <button className="hero-section-btn hero-section-btn-primary">
+            <button onClick={unimplemented} className="hero-section-btn hero-section-btn-primary">
               ▶ Play
             </button>
             <button className="hero-section-btn hero-section-btn-secondary">

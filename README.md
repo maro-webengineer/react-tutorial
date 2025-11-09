@@ -205,6 +205,22 @@ async関数の中で非同期処理の完了を間違い処理には`await`を�
 
 もっと基礎的な部分の理解を深める必要がありそうなので一旦スルーする。
 
+### TypeScriptの型エラー
+TypeScriptでは型指定が前提とされているため、想定していた型と実際の型が異なる場合はエラーが表示される
+
+![](https://storage.googleapis.com/zenn-user-upload/4ba7a753fb0b-20251108.png)
+
+`useState`を使う場合は関数の後ろで型指定をする必要があるらしい
+```javascript
+type Hoge = {
+  id: number;
+  name: string;
+  gender: string;
+};
+
+const [text, setText] = useState<Hoge[]>([]);
+```
+
 ## 参考資料
 
 https://qiita.com/Sicut_study/items/afd66cac978f4b0a6e61

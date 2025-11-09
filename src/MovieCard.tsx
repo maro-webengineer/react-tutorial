@@ -1,14 +1,15 @@
 import { Link } from "react-router";
+import type { Props } from "./types";
 
-type Movie = {
-  id: number;
-  poster_path: string;
-  original_title: string;
-}
+// type Movie = {
+//   id: number;
+//   poster_path: string;
+//   original_title: string;
+// }
 
-type Props = {
-  movie: Movie;
-}
+// type Props = {
+//   movie: Movie;
+// }
 
 const MovieCart = (props: Props) => {
   const { movie } = props;
